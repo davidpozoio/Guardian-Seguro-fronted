@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import { isAuth } from "./services/authService";
 import { useEffect, useState } from "react";
-import { setAuth, setRole } from "../../redux/userSlice";
+import { setAuth, setRole, setUserDetails } from "../../redux/userSlice";
 import { useDispatch } from "react-redux";
 import { Roles } from "../../consts/roles";
 
@@ -13,8 +13,18 @@ export function Auth() {
   useEffect(() => {
     isAuth()
       .then((res) => {
+        const user = res.data;
         dispatch(setAuth({ isAuth: true }));
-        dispatch(setRole({ role: res.data.role }));
+        dispatch(setRole({ role: user.role }));
+        dispatch(
+          setUserDetails({
+            email: user.email,
+            role: user.role,
+            fullName: user.fullName,
+            latitude: user.latitude,
+            longitude: user.longitude,
+          })
+        );
       })
       .catch(() => {
         dispatch(setAuth({ isAuth: false }));

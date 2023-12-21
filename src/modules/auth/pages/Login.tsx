@@ -1,7 +1,7 @@
 import { FormEvent } from "react";
 import { login } from "../services/authService";
 import { useDispatch } from "react-redux";
-import { setAuth, setRole } from "../../../redux/userSlice";
+import { setAuth, setRole, setUserDetails } from "../../../redux/userSlice";
 import { useNavigate } from "react-router-dom";
 import { routes } from "../../../consts/routes";
 import { Roles } from "../../../consts/roles";
@@ -22,8 +22,17 @@ export function Login() {
     login(formData.email, formData.password)
       .then((res) => {
         console.log("GOOD", res);
+        const user = res.data;
         dispatch(setAuth({ isAuth: true }));
-        dispatch(setRole({ role: res.data.role }));
+        dispatch(
+          setUserDetails({
+            fullName: user.fullName,
+            email: user.email,
+            latitude: user.latitude,
+            longitude: user.longitude,
+            role: user.role,
+          })
+        );
         navigate(`/${routes.HOME.name}`);
       })
       .catch((res) => {

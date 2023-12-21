@@ -8,22 +8,31 @@ import { useSelector } from "react-redux";
 import { AppState } from "./redux/store";
 import { routes } from "./consts/routes";
 import { useEffect } from "react";
+import { Start } from "./modules/start/Start";
 
 export function AppRouter() {
   const user = useSelector((state: AppState) => state.user);
   const navigate = useNavigate();
   const location = useLocation();
 
-  //automatically when the page loads redirect to /home
+  //automatically when the page loads redirect to /start
   useEffect(() => {
     if (location.pathname === "/") {
-      navigate("/home");
+      navigate("/start");
     }
   }, [navigate, location]);
 
   return (
     <>
       <Routes>
+        <Route
+          path="/start"
+          element={
+            <ProtectedRoute canActive={!user.isAuth} navigateTo="/home">
+              <Start />
+            </ProtectedRoute>
+          }
+        />
         <Route
           path="/home"
           element={

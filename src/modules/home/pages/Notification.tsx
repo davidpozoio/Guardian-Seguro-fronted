@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { getAllAlerts } from "../services/AlertService";
-import { AlertData } from "../models/AlertModel";
+import { getAllAlerts } from "../../../shared/services/alertService";
+import { AlertGetDto } from "../../../models/alertModel";
 
 export function Notification() {
-  const [alerts, setAlerts] = useState<AlertData[]>([]);
+  const [alerts, setAlerts] = useState<AlertGetDto[]>([]);
 
   useEffect(() => {
     getAllAlerts().then((res) => {
@@ -16,11 +16,10 @@ export function Notification() {
       <div>
         {alerts.map((alert) => {
           return (
-            <div key={alert.id}>
-              <div>{alert.id}</div>
+            <button key={alert.id}>
               <div>{alert.type}</div>
               <div>{alert.details}</div>
-            </div>
+            </button>
           );
         })}
       </div>
