@@ -1,5 +1,7 @@
+import { useDispatch } from "react-redux";
 import { saveAlert } from "../../../../shared/services/alertService";
 import "./alertTypeCard.styles.css";
+import { setSending } from "../../../../redux/alertSlice";
 
 interface AlertTypeCardProps {
   name: string;
@@ -7,7 +9,11 @@ interface AlertTypeCardProps {
 }
 
 export function AlertTypeCard({ name, url }: AlertTypeCardProps) {
+  const dispatch = useDispatch();
+
   const onSaveAlert = () => {
+    dispatch(setSending({ isSending: true }));
+
     saveAlert({
       type: name,
       details: "sdas",
@@ -19,6 +25,9 @@ export function AlertTypeCard({ name, url }: AlertTypeCardProps) {
       })
       .catch((err) => {
         console.log("ERROR", err);
+      })
+      .finally(() => {
+        dispatch(setSending({ isSending: false }));
       });
   };
 
