@@ -1,6 +1,7 @@
 import { ChangeEventHandler, useState } from "react";
-import { alertTypes } from "../../../consts/alertTypes";
-import { AlertTypeList } from "../components/AlertTypesList";
+import { alertTypes } from "../../../../consts/alertTypes";
+import { AlertTypeList } from "../../components/alert-types-list/AlertTypesList";
+import "./alertTypeSelector.styles.css";
 
 export function AlertTypeSelector() {
   const [alerts, setAlerts] = useState(alertTypes);
@@ -13,9 +14,15 @@ export function AlertTypeSelector() {
   };
 
   return (
-    <>
-      <input type="text" onChange={handleSearchTerm} />
+    <div className="margin-layout alert-type-selector-page">
+      <h1 className="title">Alertas</h1>
+      <input
+        className="input"
+        type="text"
+        onChange={handleSearchTerm}
+        placeholder="Busca un tipo de alerta"
+      />
       <AlertTypeList listOfAlertTypes={alerts} />
-    </>
+    </div>
   );
 }

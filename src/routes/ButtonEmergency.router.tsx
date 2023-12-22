@@ -1,6 +1,6 @@
 import { Route } from "react-router-dom";
-import { AlertButton } from "../modules/button-emergency/pages/AlertButton";
-import { AlertTypeSelector } from "../modules/button-emergency/pages/AlertTypeSelector";
+import { AlertButton } from "../modules/button-emergency/pages/alert-button/AlertButton";
+import { AlertTypeSelector } from "../modules/button-emergency/pages/alert-type-selector/AlertTypeSelector";
 import { routes } from "../consts/routes";
 
 export function ButtonEmergencyRouter() {

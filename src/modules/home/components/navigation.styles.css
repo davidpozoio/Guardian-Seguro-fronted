@@ -1,0 +1,19 @@
+.navigator {
+  position: fixed;
+  z-index: 1;
+  bottom: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  width: 100%;
+  height: 3.75rem;
+
+  background-color: var(--primary-color);
+  border-top: 1px solid var(--font-ghost);
+}
+
+.navigator > a {
+  color: var(--secundary-color);
+}

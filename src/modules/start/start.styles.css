@@ -1,0 +1,69 @@
+.start-page {
+  background-color: var(--primary-color);
+  gap: 0 10px;
+}
+
+.image-container {
+  position: relative;
+  display: flex;
+
+  background-color: var(--secundary-color);
+  background-image: url("/src/assets/start-bg.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.image {
+  object-fit: cover;
+}
+
+.content {
+  position: relative;
+  top: -30px;
+  z-index: 1;
+
+  padding-top: 3.75rem;
+  border-radius: 1.875rem 1.875rem 0 0;
+  background-color: var(--primary-color);
+}
+
+.button-container,
+.header {
+  display: grid;
+  justify-content: center;
+
+  text-align: center;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  color: var(--font-title);
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 3.125rem;
+  max-width: 14.375rem;
+  min-width: 12.5rem;
+
+  background-color: var(--secundary-color);
+  border-radius: 0.3125rem;
+  color: var(--font-color);
+}
+
+.button--ghost {
+  background-color: var(--primary-color);
+  color: var(--font-ghost);
+}
+
+.text {
+  color: var(--font-ghost);
+}

@@ -1,0 +1,26 @@
+.alert-button-page {
+  height: 100vh;
+  grid-template-columns: 1fr 1fr;
+  background-color: var(--secundary-color);
+  background-image: url("/src/assets/start-bg.svg");
+  background-position: left;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.title {
+  color: var(--font-title);
+  text-align: center;
+}
+
+.alert-button {
+  display: block;
+  justify-self: center;
+
+  width: 70%;
+  max-width: 350px;
+  min-width: 200px;
+  aspect-ratio: 1/1;
+
+  background-color: var(--secundary-color);
+  border-radius: 50%;
+}

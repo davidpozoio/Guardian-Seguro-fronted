@@ -1,0 +1,19 @@
+.alert-type-selector-page {
+  height: calc(100vh - 60px);
+  background-color: var(--primary-color);
+}
+
+.input {
+  padding: 0 10px;
+
+  margin-bottom: 20px;
+
+  border-radius: 20px;
+  height: 30px;
+  border: 1px solid var(--font-ghost);
+}
+
+.title {
+  color: var(--font-title);
+  text-align: start;
+}
