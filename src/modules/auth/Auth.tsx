@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { setAuth, setRole, setUserDetails } from "../../redux/userSlice";
 import { useDispatch } from "react-redux";
 import { Roles } from "../../consts/roles";
+import "./auth.styles.css";
 
 export function Auth() {
   const dispatch = useDispatch();
@@ -15,16 +16,7 @@ export function Auth() {
       .then((res) => {
         const user = res.data;
         dispatch(setAuth({ isAuth: true }));
-        dispatch(setRole({ role: user.role }));
-        dispatch(
-          setUserDetails({
-            email: user.email,
-            role: user.role,
-            fullName: user.fullName,
-            latitude: user.latitude,
-            longitude: user.longitude,
-          })
-        );
+        dispatch(setUserDetails({ ...user }));
       })
       .catch(() => {
         dispatch(setAuth({ isAuth: false }));

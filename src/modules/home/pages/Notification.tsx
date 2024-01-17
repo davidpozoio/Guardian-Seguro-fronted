@@ -1,20 +1,14 @@
-import { useEffect, useState } from "react";
 import { getAllAlerts } from "../../../shared/services/alertService";
-import { AlertGetDto } from "../../../models/alertModel";
+import { useAutomaticLogout } from "../../../hooks/useFetch";
 
 export function Notification() {
-  const [alerts, setAlerts] = useState<AlertGetDto[]>([]);
+  const { data: alerts } = useAutomaticLogout(["user"], getAllAlerts);
 
-  useEffect(() => {
-    getAllAlerts().then((res) => {
-      setAlerts(res.data);
-    });
-  }, []);
   return (
     <>
       <h1>notification</h1>
       <div>
-        {alerts.map((alert) => {
+        {alerts?.data.map((alert) => {
           return (
             <button key={alert.id}>
               <div>{alert.type}</div>

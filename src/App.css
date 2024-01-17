@@ -1,0 +1,31 @@
+body {
+  background-color: var(--primary-color);
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 3.125rem;
+  max-width: 14.375rem;
+  min-width: 12.5rem;
+
+  background-color: var(--secundary-color);
+  border: none;
+  border-radius: 0.3125rem;
+  color: var(--font-color);
+}
+
+.button--ghost {
+  background-color: var(--primary-color);
+  color: var(--font-ghost);
+}
+
+.button:disabled {
+  background-color: var(--pale-secundary-color);
+}
+
+.error-message {
+  color: var(--error);
+}

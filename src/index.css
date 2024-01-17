@@ -7,9 +7,11 @@
 :root {
   --primary-color: #f6f5f5;
   --secundary-color: #00afb5;
+  --pale-secundary-color: #7cd3d6;
   --font-color: rgb(255, 255, 255);
   --font-ghost: rgb(83, 83, 83);
   --font-title: #2d0c57;
+  --error: rgba(255, 95, 95, 0.938);
   font-family: "Kumbh Sans", sans-serif;
 }
 
