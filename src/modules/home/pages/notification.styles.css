@@ -1,0 +1,6 @@
+.notifications {
+  display: grid;
+  gap: 30px;
+  height: fit-content;
+  padding-bottom: 200px;
+}

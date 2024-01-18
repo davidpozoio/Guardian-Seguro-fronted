@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import { useState } from "react";
 import { Optional } from "../../../utils/types";
@@ -85,8 +85,14 @@ export function Login() {
           {loginForm.touched.password && loginForm.errors.password}
         </small>
         <button type="submit" className="button" disabled={disabled}>
-          submit
+          Iniciar sesión
         </button>
+        <Link
+          className="button button--ghost"
+          to={`/${routes.AUTH.name}/${routes.AUTH.SIGNUP}`}
+        >
+          ¿No tienes cuenta?, regístrate aquí
+        </Link>
       </form>
     </>
   );

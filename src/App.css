@@ -14,6 +14,8 @@ body {
   background-color: var(--secundary-color);
   border: none;
   border-radius: 0.3125rem;
+
+  text-align: center;
   color: var(--font-color);
 }
 

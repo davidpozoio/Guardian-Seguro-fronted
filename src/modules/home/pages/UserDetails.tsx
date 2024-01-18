@@ -5,12 +5,10 @@ export function UserDetails() {
   const user = useSelector((state: AppState) => state.user);
 
   return (
-    <>
-      <h2>{user.fullName}</h2>
-      <p>{user.email}</p>
-      <p>{user.role}</p>
-      <p>{user.latitude}</p>
-      <p>{user.longitude}</p>
-    </>
+    <div className="margin-layout">
+      <h2>Nombre: {user.fullName}</h2>
+      <p>Email: {user.email}</p>
+      <p>Rol: {user.role}</p>
+    </div>
   );
 }

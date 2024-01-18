@@ -7,14 +7,16 @@
   background-size: cover;
   background-repeat: no-repeat;
 }
-.title {
+.title-button {
   color: var(--font-title);
   text-align: center;
 }
 
 .alert-button {
-  display: block;
+  display: flex;
   justify-self: center;
+  align-items: center;
+  justify-content: center;
 
   width: 70%;
   max-width: 350px;

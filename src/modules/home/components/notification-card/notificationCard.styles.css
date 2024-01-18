@@ -1,0 +1,12 @@
+.card-notification {
+  box-shadow: 1px 1px 10px 4px rgb(211, 211, 211);
+  padding: 10px;
+
+  background-color: white;
+  border-radius: 8px;
+}
+
+.card-notification > h3 {
+  margin: 0;
+  margin: 5px 0;
+}
