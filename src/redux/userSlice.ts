@@ -16,7 +16,7 @@ interface UserPayload extends AuthPayload, RolePayload, UserDetails {}
 
 const initialState: UserPayload = {
   isAuth: false,
-  role: Roles.USER,
+  role: Roles.ADMIN,
   email: "",
   fullName: "",
   latitude: 0,

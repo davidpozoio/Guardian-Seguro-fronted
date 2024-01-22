@@ -1,10 +1,19 @@
 import { AlertType } from "../models/alertModel";
 
 export const alertTypes: AlertType[] = [
-  { name: "incendio", url: "/src/assets/fire.bmp" },
-  { name: "acoso", url: "/src/assets/fire.bmp" },
-  { name: "robo", url: "/src/assets/fire.bmp" },
-  { name: "incendio", url: "/src/assets/fire.bmp" },
-  { name: "incendio", url: "/src/assets/fire.bmp" },
-  { name: "incendio", url: "/src/assets/fire.bmp" },
+  {
+    name: "Incendio",
+    url: "/src/assets/icons/alerts/fire.png",
+    description: "Hay un incendio",
+  },
+  {
+    name: "Acoso",
+    url: "/src/assets/icons/alerts/harassment.png",
+    description: "Acoso",
+  },
+  {
+    name: "Robo",
+    url: "/src/assets/icons/alerts/heist.png",
+    description: "Un robo",
+  },
 ];

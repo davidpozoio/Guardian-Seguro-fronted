@@ -31,3 +31,54 @@ body {
 .error-message {
   color: var(--error);
 }
+
+.form {
+  padding-top: 50px;
+  justify-content: center;
+  gap: 20px;
+}
+
+.form > * {
+  width: 100%;
+  justify-self: center;
+}
+
+.form > input {
+  padding: 0 10px;
+  height: 50px;
+  border: none;
+  border-radius: 8px;
+}
+
+.select {
+  border: none;
+  height: 50px;
+  padding: 0 10px;
+}
+
+.close-button {
+  align-self: flex-end;
+
+  width: 30px;
+  height: 30px;
+  border: none;
+  background-color: var(--secundary-color);
+  border-radius: 100%;
+
+  color: white;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 100vh;
+
+  background-color: rgba(0, 0, 0, 0.301);
+}

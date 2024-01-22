@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { setAuth, setRole, setUserDetails } from "../../redux/userSlice";
 import { useDispatch } from "react-redux";
 import { Roles } from "../../consts/roles";
-import "./auth.styles.css";
 
 export function Auth() {
   const dispatch = useDispatch();
@@ -25,5 +24,5 @@ export function Auth() {
       .finally(() => setIsLoading(false));
   }, [dispatch]);
 
-  return <>{isLoading ? <p>Loading...</p> : <Outlet />}</>;
+  return <>{isLoading ? <p>Iniciando sesión...</p> : <Outlet />}</>;
 }

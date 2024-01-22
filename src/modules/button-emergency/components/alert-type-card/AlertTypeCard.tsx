@@ -1,46 +1,36 @@
-import { useDispatch } from "react-redux";
-import { saveAlert } from "../../../../shared/services/alertService";
+import { useState } from "react";
 import "./alertTypeCard.styles.css";
-import { setSending } from "../../../../redux/alertSlice";
-import { useLocation, useNavigate } from "react-router-dom";
+import Skeleton from "react-loading-skeleton";
 
 interface AlertTypeCardProps {
   name: string;
   url: string;
+  description?: string;
+  onClick: (alertType: string, description: string) => void;
 }
 
-export function AlertTypeCard({ name, url }: AlertTypeCardProps) {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  const onSaveAlert = () => {
-    dispatch(setSending({ isSending: true }));
-
-    saveAlert({
-      type: name,
-      details: "sdas",
-      latitude: 123,
-      longitude: 231,
-    })
-      .then((res) => {
-        console.log("ALERT CREATED:", res);
-      })
-      .catch((err) => {
-        console.log("ERROR", err);
-      })
-      .finally(() => {
-        dispatch(setSending({ isSending: false }));
-        console.log(location.pathname);
-        if (location.pathname === "/home/alerts/types") {
-          navigate("/home/alerts");
-        }
-      });
-  };
+export function AlertTypeCard({
+  name,
+  url,
+  onClick,
+  description = "",
+}: AlertTypeCardProps) {
+  const [isLoading, setIsLoading] = useState(true);
 
   return (
-    <button onClick={onSaveAlert} className="card">
-      <img className="image" src={url} alt={name} width="100" height="100" />
+    <button onClick={() => onClick(name, description)} className="card">
+      {isLoading && <Skeleton circle={true} width={100} height={100} />}
+      <img
+        className="image-card"
+        src={url}
+        alt={name}
+        width="100"
+        height="100"
+        style={{ display: isLoading ? "none" : "block" }}
+        onLoad={() => {
+          setIsLoading(false);
+        }}
+      />
       <span>{name}</span>
     </button>
   );

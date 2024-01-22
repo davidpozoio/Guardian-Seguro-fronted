@@ -1,4 +1,10 @@
 .card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
   padding: 0;
   width: 100%;
   border: none;
@@ -6,7 +12,8 @@
   border-radius: 0.5rem;
 }
 
-.image {
-  width: 100%;
+.image-card {
+  object-fit: contain;
+  width: 80%;
   aspect-ratio: 1/1;
 }

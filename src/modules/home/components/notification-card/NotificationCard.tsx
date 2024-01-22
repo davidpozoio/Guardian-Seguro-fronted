@@ -1,14 +1,19 @@
 import { AlertGetDto } from "../../../../models/alertModel";
 import "./notificationCard.styles.css";
 
-const NotificationCard = ({ details, type }: AlertGetDto) => {
+interface NotificationCardProps {
+  alert: AlertGetDto;
+  handleClick: () => void;
+}
+
+const NotificationCard = ({ alert, handleClick }: NotificationCardProps) => {
   return (
-    <div className="card-notification">
+    <div className="card-notification" onClick={handleClick}>
       <h3>Tipo de alerta:</h3>
-      <span>{type}</span>
+      <span>{alert.type}</span>
 
       <h3>Detalles</h3>
-      <span>{details}</span>
+      <span>{alert.details}</span>
     </div>
   );
 };

@@ -1,6 +1,7 @@
 export interface AlertType {
   name: string;
   url: string;
+  description: string;
 }
 
 export interface AlertPostDto {
