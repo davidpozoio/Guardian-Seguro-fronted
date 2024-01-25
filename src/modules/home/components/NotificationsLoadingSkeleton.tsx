@@ -20,7 +20,11 @@ const NotificationsLoadingSkeleton = ({
               <Skeleton />
             </span>
 
-            <h3>Detalles</h3>
+            <h3>Detalles: </h3>
+            <span>
+              <Skeleton />
+            </span>
+            <h3>Nombre: </h3>
             <span>
               <Skeleton />
             </span>
