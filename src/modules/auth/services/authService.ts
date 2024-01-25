@@ -11,10 +11,7 @@ export function login(email: string, password: string) {
 }
 
 export function signup(user: RegisterUserDto) {
-  return axios.post(
-    `${config.AUTHPATH}/signup`,
-    user
-  ) as Promise<AuthenticatedUser>;
+  return axios.post<AuthenticatedUser>(`${config.AUTHPATH}/signup`, user);
 }
 
 export function isAuth() {

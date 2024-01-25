@@ -10,3 +10,4 @@ export function saveAlert(alert: AlertPostDto) {
     data: AlertGetDto[];
   }>;
 }
+

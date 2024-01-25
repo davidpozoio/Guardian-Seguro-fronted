@@ -5,13 +5,15 @@ import { RegisterUserDto } from "../models/RegisterUserDto";
 import { useDispatch } from "react-redux";
 import { setAuth, setRole, setUserDetails } from "../../../redux/userSlice";
 import { Roles } from "../../../consts/roles";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { routes } from "../../../consts/routes";
 import useGeo from "../../../hooks/useGeo";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export function Signup() {
   const { currentPosition, getGeolocation } = useGeo();
+  const navigate = useNavigate();
+  const [disabled, setDisabled] = useState(false);
 
   useEffect(() => {
     getGeolocation();
@@ -23,6 +25,7 @@ export function Signup() {
       fullName: "",
       gender: "male",
       identification: "",
+      role: "",
       email: "",
       password: "",
     },
@@ -48,12 +51,15 @@ export function Signup() {
     },
     onSubmit: (values) => {
       console.log(values);
+      setDisabled(true);
       signup({
         ...values,
         latitude: currentPosition?.coords.latitude,
         longitude: currentPosition?.coords.longitude,
       } as RegisterUserDto)
-        .then((authUser) => {
+        .then((res) => {
+          const authUser = res.data;
+          console.log("auth user", res.data);
           dispatch(setAuth({ isAuth: true }));
           dispatch(
             setUserDetails({
@@ -64,10 +70,14 @@ export function Signup() {
               role: authUser.role,
             })
           );
+          navigate(`${routes.HOME.name}`);
         })
         .catch(() => {
           dispatch(setAuth({ isAuth: false }));
           dispatch(setRole({ role: Roles.INVALID }));
+        })
+        .finally(() => {
+          setDisabled(false);
         });
     },
   });
@@ -91,6 +101,7 @@ export function Signup() {
 
         <label htmlFor="Igender">Género: </label>
         <select
+          id="Igender"
           value={signupForm.values.gender}
           name="gender"
           className="select"
@@ -98,6 +109,18 @@ export function Signup() {
         >
           <option value="male">hombre</option>
           <option value="female">mujer</option>
+        </select>
+
+        <label htmlFor="Irole">Rol: </label>
+        <select
+          id="Irole"
+          value={signupForm.values.role}
+          name="role"
+          className="select"
+          onChange={signupForm.handleChange}
+        >
+          <option value="USER">Usuario</option>
+          <option value="GUARD">Guardia</option>
         </select>
 
         <label htmlFor="Iidentification">Cédula: </label>
@@ -139,7 +162,7 @@ export function Signup() {
         <small className="error-message">
           {signupForm.touched.password && signupForm.errors.password}
         </small>
-        <button type="submit" className="button">
+        <button type="submit" className="button" disabled={disabled}>
           Registrarse
         </button>
         <Link
