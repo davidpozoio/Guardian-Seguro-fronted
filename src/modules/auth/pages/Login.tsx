@@ -20,10 +20,10 @@ export function Login() {
     validate: (values) => {
       const errors: Optional<typeof values> = {};
       if (!values.email) {
-        errors.email = "email is required*";
+        errors.email = "Este campo es obligatorio*";
       }
       if (!values.password) {
-        errors.password = "password is required*";
+        errors.password = "Este campo es obligatorio*";
       }
 
       return errors;
@@ -48,9 +48,18 @@ export function Login() {
           navigate(`/${routes.HOME.name}`);
         })
         .catch((res) => {
-          console.log("BAD", res);
+          const errorMessage = res.response.data.message;
+          if (errorMessage === "there was an error: user not found") {
+            loginForm.setErrors({ email: "correo electrónico inválido*" });
+          }
+          if (errorMessage === "incorrect password") {
+            loginForm.setErrors({ password: "contraseña incorrecta*" });
+          }
+
           dispatch(setAuth({ isAuth: false }));
           dispatch(setRole({ role: Roles.INVALID }));
+        })
+        .finally(() => {
           setDisabled(false);
         });
     },
@@ -60,7 +69,7 @@ export function Login() {
     <>
       <form className="margin-layout form" onSubmit={loginForm.handleSubmit}>
         <h2>Login</h2>
-        <label htmlFor="Iemail">Email: </label>
+        <label htmlFor="Iemail">Correo electrónico: </label>
         <input
           id="Iemail"
           type="text"
@@ -72,7 +81,7 @@ export function Login() {
         <small className="error-message">
           {loginForm.touched.email && loginForm.errors.email}
         </small>
-        <label htmlFor="Ipassword">Password: </label>
+        <label htmlFor="Ipassword">Contraseña: </label>
         <input
           id="Ipassword"
           type="text"

@@ -25,7 +25,7 @@ export function Signup() {
       fullName: "",
       gender: "male",
       identification: "",
-      role: "",
+      role: "USER",
       email: "",
       password: "",
     },
@@ -52,6 +52,7 @@ export function Signup() {
     onSubmit: (values) => {
       console.log(values);
       setDisabled(true);
+      console.log(currentPosition);
       signup({
         ...values,
         latitude: currentPosition?.coords.latitude,
@@ -72,7 +73,11 @@ export function Signup() {
           );
           navigate(`${routes.HOME.name}`);
         })
-        .catch(() => {
+        .catch((res) => {
+          const errorMessage = res.response.data.message;
+          if (errorMessage === "email is already created") {
+            signupForm.setErrors({ email: "el correo ya existe*" });
+          }
           dispatch(setAuth({ isAuth: false }));
           dispatch(setRole({ role: Roles.INVALID }));
         })
@@ -114,7 +119,7 @@ export function Signup() {
         <label htmlFor="Irole">Rol: </label>
         <select
           id="Irole"
-          value={signupForm.values.role}
+          defaultValue={signupForm.values.role}
           name="role"
           className="select"
           onChange={signupForm.handleChange}
@@ -137,7 +142,7 @@ export function Signup() {
             signupForm.errors.identification}
         </small>
 
-        <label htmlFor="Iemail">Email: </label>
+        <label htmlFor="Iemail">Correo Electrónico: </label>
         <input
           id="Iemail"
           type="text"
