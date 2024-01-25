@@ -11,6 +11,12 @@ export interface AlertPostDto {
   longitude: number;
 }
 
+export interface UserAlert {
+  fullName: string;
+  gender: string;
+}
+
 export interface AlertGetDto extends AlertPostDto {
   id: number;
+  user: UserAlert;
 }

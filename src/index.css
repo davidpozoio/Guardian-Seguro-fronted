@@ -46,6 +46,11 @@ a {
   grid-auto-rows: 100px 100px 450px;
 }
 
+.margin-layout.--details-content {
+  padding-top: 50px;
+  gap: 5px;
+}
+
 .start-page-layout {
   height: 100vh;
 

@@ -12,8 +12,11 @@ const NotificationCard = ({ alert, handleClick }: NotificationCardProps) => {
       <h3>Tipo de alerta:</h3>
       <span>{alert.type}</span>
 
-      <h3>Detalles</h3>
+      <h3>Detalles: </h3>
       <span>{alert.details}</span>
+
+      <h3>Nombre:</h3>
+      <span>{alert.user.fullName}</span>
     </div>
   );
 };

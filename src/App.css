@@ -24,6 +24,12 @@ body {
   color: var(--font-ghost);
 }
 
+.button--logout {
+  justify-self: center;
+  font-size: large;
+  margin-top: 100px;
+}
+
 .button:disabled {
   background-color: var(--pale-secundary-color);
 }

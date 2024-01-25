@@ -22,3 +22,7 @@ export function isAuth() {
     data: AuthenticatedUser;
   }>;
 }
+
+export function logout() {
+  return axios.get(`${config.AUTHPATH}/logout`) as Promise<unknown>;
+}
