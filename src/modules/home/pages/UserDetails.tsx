@@ -15,7 +15,7 @@ export function UserDetails() {
       <h3>Rol: </h3>
       <span>{user.role}</span>
       <button className="button button--logout" onClick={() => logout()}>
-        logout
+        Cerrar sesión
       </button>
     </div>
   );
