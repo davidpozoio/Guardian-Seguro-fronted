@@ -9,9 +9,11 @@ import { AppState } from "./redux/store";
 import { routes } from "./consts/routes";
 import { useEffect } from "react";
 import { Start } from "./modules/start/Start";
+import { Roles } from "./consts/roles";
 
 export function AppRouter() {
   const user = useSelector((state: AppState) => state.user);
+
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -51,7 +53,11 @@ export function AppRouter() {
           element={
             <ProtectedRoute
               canActive={!user.isAuth}
-              navigateTo={`/${routes.HOME.name}`}
+              navigateTo={`/${
+                user.role === Roles.GUARD
+                  ? routes.HOME.name + "/" + routes.HOME.NOTIFICATIONS
+                  : routes.HOME.name
+              }`}
             >
               <Auth />
             </ProtectedRoute>

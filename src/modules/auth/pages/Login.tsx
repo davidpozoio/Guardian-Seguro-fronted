@@ -1,14 +1,16 @@
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Optional } from "../../../utils/types";
 import { login } from "../services/authService";
 import { setAuth, setRole, setUserDetails } from "../../../redux/userSlice";
 import { routes } from "../../../consts/routes";
 import { Roles } from "../../../consts/roles";
+import useGeo from "../../../hooks/useGeo";
 
 export function Login() {
+  const {getGeolocation} = useGeo();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [disabled, setDisabled] = useState(false);
@@ -65,6 +67,10 @@ export function Login() {
     },
   });
 
+  useEffect(()=>{
+    getGeolocation();
+  }, [getGeolocation])
+  
   return (
     <>
       <form className="margin-layout form" onSubmit={loginForm.handleSubmit}>
