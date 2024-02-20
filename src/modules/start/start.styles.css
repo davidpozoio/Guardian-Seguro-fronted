@@ -8,7 +8,7 @@
   display: flex;
 
   background-color: var(--secundary-color);
-  background-image: url("/src/assets/start-bg.svg");
+  background-image: url("/start-bg.svg");
   background-repeat: no-repeat;
   background-size: cover;
 }
