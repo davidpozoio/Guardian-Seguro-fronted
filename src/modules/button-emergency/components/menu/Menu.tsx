@@ -26,6 +26,7 @@ const Menu = ({ onClose, alertType, description }: MenuProps) => {
     initialValues: { description: "" },
     onSubmit: (values) => {
       console.log(values);
+      console.log(currentPosition);
       saveAlert({
         type: alertType,
         details: values.description ? values.description : description,
