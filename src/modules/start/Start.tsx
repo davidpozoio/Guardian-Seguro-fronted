@@ -7,7 +7,7 @@ export function Start() {
       <div className="image-container --full-width"></div>
       <div className="content --full-width margin-layout">
         <header className="header">
-          <img src="/src/assets/Icon.svg" alt="logo" width="100" height="100" />
+          <img src="/Icon.svg" alt="logo" width="100" height="100" />
           <h1 className="title">Guardian en línea</h1>
           <p className="text">Seguridad en un click</p>
         </header>
